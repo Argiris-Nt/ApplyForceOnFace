@@ -1,0 +1,68 @@
+<extension version="1" name="newforce">
+  <guid shortid="newforce">4490D4AD-B7E8-41C4-BC09-6D0CA4C14D9A</guid>
+  <script src="newforce.py" />
+  
+  <interface context="Mechanical">
+    <images>images</images>
+    <toolbar name="newforce" caption="newforce">
+      <entry name="newforce" icon="icon">
+        <callbacks>
+          <onclick>createforce</onclick>
+        </callbacks>
+      </entry>
+    </toolbar>
+  </interface>
+  
+  <simdata context="Mechanical">
+    <load name="newforce" version="1" caption="newforce" icon="icon" issupport="false" isload="true" color="#0000FF">
+
+      <callbacks>
+        <getsolvecommands>writeforce</getsolvecommands>
+      </callbacks>
+	  
+      <property name="Geometry"  caption= "Geometry" control="scoping">
+        <attributes selection_filter="face" />
+      </property>
+	  
+	  <property name="Type"  caption= "Type" control="text" default="force">
+      </property>
+	  <property name="Defined By" caption="Defined By" control="select" default="By Component">
+	    <attributes options="By Component, By Vector" />
+	  </property>
+		  
+      <property name="Coordinate System" caption="Coordinate System" control="coordinatesystem_selection">
+	    <callbacks>
+		  <isvisible>show1</isvisible>
+		</callbacks>
+	  </property>
+      <property name="FX" caption="FX" control="float" default="0.0 [N]" unit="Force">
+	    <callbacks>
+		  <isvisible>show1</isvisible>
+		</callbacks>
+	  </property>
+	  <property name="FY" caption="FY" control="float" default="0.0 [N]" unit="Force"> 
+	    <callbacks>
+		  <isvisible>show1</isvisible>
+		</callbacks>
+	  </property>
+	  <property name="FZ" caption="FZ" control="float" default="0.0 [N]" unit="Force"> 
+	    <callbacks>
+		  <isvisible>show1</isvisible>
+		</callbacks>
+	  </property>
+	  
+	  <property name="magnitude" caption="magnitude" control="float" default="0.0 [N]" unit="Force">  
+	    <callbacks>
+		  <isvisible>show2</isvisible>
+		</callbacks>
+	  </property>
+	  <property name="direction" caption="direction" control="select" default="exterior">
+        <attributes options="exterior,interior"/>
+		<callbacks>
+		  <isvisible>show2</isvisible>
+		</callbacks>
+      </property>		
+    </load>
+  </simdata>
+  
+</extension>
